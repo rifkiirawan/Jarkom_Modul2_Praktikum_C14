@@ -126,7 +126,7 @@ Require valid-user
 Jawab :
 1. tambahkan konfigurasi berikut pada file /etc/apace2/sites-available/000-default.conf
 ```
-Redirect / "http://semeruc10.pw/"
+Redirect / "http://semeruc14.pw/"
 ```  
 ![](img/16b.jpg)  
 2. ketikkan IP Probolinggo pada browser, jika muncul halaman seperti berikut, maka sudah berhhasil  
