@@ -90,7 +90,7 @@ Jawab :
  7. rename file menjadi naik.gunung.semeruc14.pw
  8. jalankan a2ensite naik.gunung.semeruc14.pw
  9. jalankan service apache2 restart
- 10. buka naik.gunung.semeruc14.pw pada broser, jika muncul seperti gambar dibawah, maka berhasil (terdapat tampilan autentifikasi pada gambar tersebut, fitur tersebut untuk nomor selanjutnya)  
+ 10. buka naik.gunung.semeruc14.pw pada broser, jika muncul seperti gambar dibawah, maka berhasil
  ![](img/15c.jpg)  
  
  ### 15. Dikarenakan web http://naik.gunung.semeruc14.pw bersifat private, harus membuat web http://naik.gunung.semeruc14.pw agar diberi autentikasi password dengan username “semeru” dan password “kuynaikgunung”
