@@ -18,7 +18,7 @@ Jawab :
 Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
 2. Tambahkan konfigurasi :  
-```www     IN	    CNAME	   semeruc14.pw.```
+```www     IN	    CNAME	   semeruc14.pw.```  
 ![](img/1b.jpg)
 3. Service bind9 restart
 
@@ -26,7 +26,7 @@ Jawab :
 Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
 2. Tambahkan konfigurasi :  
-```penanjakan	IN	A	10.151.77.124```
+```penanjakan	IN	A	10.151.77.124```  
 ![](img/1b.jpg)
 3. Service bind9 restart
 
@@ -39,7 +39,7 @@ zone "77.151.10.in-addr.arpa" {
     type master;
     file "/etc/bind/semeruc14/77.151.10.in-addr.arpa";
 };
-```
+```  
 ![](img/1a.jpg)
 3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa
 4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa
@@ -55,7 +55,7 @@ uml MALANG :
 ```	
 also-notify { 10.151.77.123; };
 allow-transfer { 10.151.77.123; };
-```
+```  
 ![](img/5a.jpg)
 3. Service bind9 restart
 
@@ -73,7 +73,7 @@ uml MALANG :
 ```
 ns1		IN	A	10.151.77.123
 gunung	IN	NS	ns1
-```
+```  
 ![](img/6a.jpg)
 3. nano /etc/bind/named.conf.options
 4. Tambahkan konfigurasi :  
@@ -99,7 +99,7 @@ Jawab :
 uml MOJOKERTO :
 1. nano /etc/bind/delegasi/gunung.semeruc14.pw
 2. Tambahkan konfigurasi :   
-```	naik	IN	A	10.151.77.124 ```
+```	naik	IN	A	10.151.77.124 ```  
 ![](img/6e.jpg)
 3. Service bind9 restart
 
