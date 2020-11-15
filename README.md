@@ -255,4 +255,8 @@ RewriteCond %{REQUEST_URI} ^/public/images/(.*)semeru(.*).jpg
 RewriteRule ^ http://penanjakan.semeruc14.pw/public/images/semeru.jpg
 ```  
 ![](img/17.jpg)  
-3. service apache2 restart
+3. service apache2 restart  
+  
+  ### Kendala selama pengerjaan :
+  1. Takut terkena segfault.
+  2. Terkadang bingung untuk backtracking kesalahan dimana.
