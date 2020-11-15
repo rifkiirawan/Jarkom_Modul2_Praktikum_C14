@@ -5,19 +5,19 @@
 ### 1. Alamat http://semeruc14.pw yang diatur DNS-nya pada MALANG dan mengarah ke IP Server PROBOLINGGO
 Jawab :
 1. nano /etc/bind/named.conf.local
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ![](img/1a.jpg)
 3. mkdir /etc/bind/semeruc14
 4. cp /etc/bind/db.local /etc/bind/semeruc14/semeruc14.pw
 5. nano /etc/bind/semeruc14/semeruc14.pw
-6. Tambahkan konfigurasi :
+6. Tambahkan konfigurasi :  
 ![](img/1b.jpg)
 7. Service bind9 restart
 
 ### 2. Alias http://www.semeruc14.pw
 Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```www     IN	    CNAME	   semeruc14.pw.```
 ![](img/1b.jpg)
 3. Service bind9 restart
@@ -25,7 +25,7 @@ Jawab :
 ### 3. Subdomain http://penanjakan.semeruc14.pw
 Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```penanjakan	IN	A	10.151.77.124```
 ![](img/1b.jpg)
 3. Service bind9 restart
@@ -33,7 +33,7 @@ Jawab :
 ### 4. Reverse main domain 
 Jawab :
 1. nano /etc/bind/named.conf.local
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```
 zone "77.151.10.in-addr.arpa" {
     type master;
@@ -43,7 +43,7 @@ zone "77.151.10.in-addr.arpa" {
 ![](img/1a.jpg)
 3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa
 4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa
-5. Tambahkan konfigurasi :
+5. Tambahkan konfigurasi :  
 ![](img/4.jpg)
 6. Service bind9 restart
 
@@ -51,7 +51,7 @@ zone "77.151.10.in-addr.arpa" {
 Jawab :
 uml MALANG :
 1. nano /etc/bind/named.conf.local
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```	
 also-notify { 10.151.77.123; };
 allow-transfer { 10.151.77.123; };
@@ -61,7 +61,7 @@ allow-transfer { 10.151.77.123; };
 
 uml MOJOKERTO :
 1. nano /etc/bind/named.conf.local
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ![](img/5b.jpg)
 3. Service bind9 restart
 
@@ -69,28 +69,28 @@ uml MOJOKERTO :
 Jawab :
 uml MALANG :
 1. nano /etc/bind/semeruc14/semeruc14.pw
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```
 ns1		IN	A	10.151.77.123
 gunung	IN	NS	ns1
 ```
 ![](img/6a.jpg)
 3. nano /etc/bind/named.conf.options
-4. Tambahkan konfigurasi :
+4. Tambahkan konfigurasi :  
 ![](img/6b.jpg)
 5. Service bind9 restart
 
 uml MOJOKERTO :
 1. nano /etc/bind/named.conf.local
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ![](img/6c.jpg)
 3. nano /etc/bind/named.conf.options
-4. Tambahkan konfigurasi :
+4. Tambahkan konfigurasi :  
 ![](img/6d.jpg)
 5. mkdir /etc/bind/delegasi
 6. cp /etc/bind/db.local /etc/bind/delegasi/gunung.semeruc14.pw
 7. nano /etc/bind/delegasi/gunung.semeruc14.pw
-8. Tambahkan konfigurasi :
+8. Tambahkan konfigurasi :  
 ![](img/6e.jpg)
 9. Service bind9 restart
 
@@ -98,7 +98,7 @@ uml MOJOKERTO :
 Jawab :
 uml MOJOKERTO :
 1. nano /etc/bind/delegasi/gunung.semeruc14.pw
-2. Tambahkan konfigurasi : 
+2. Tambahkan konfigurasi :   
 ```	naik	IN	A	10.151.77.124 ```
 ![](img/6e.jpg)
 3. Service bind9 restart
@@ -108,7 +108,7 @@ Jawab :
 1. cd /etc/apache2/sites-available
 2. cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/semeruc14.pw.conf
 3. nano /etc/apache2/sites-available/semeruc14.pw.conf
-Tambahkan konfigurasi :
+Tambahkan konfigurasi :  
 ![](img/8.jpg)
 4. a2ensite semeruc14.pw
 6. wget 10.151.36.202/semeru.pw.zip
@@ -248,7 +248,7 @@ Redirect / "http://semeruc14.pw/"
 ### 17. Karena pengunjung pada /var/www/penanjakan.semeruc14.pw/public/images sangat banyak maka semua request gambar yang memiliki substring “semeru” akan diarahkan menuju semeru.jpg.
 Jawab :
 1. nano /var/www/penanjakan.semeruc14.pw/.htaccess
-2. Tambahkan konfigurasi :
+2. Tambahkan konfigurasi :  
 ```
 RewriteCond %{REQUEST_URI} !^/public/images/semeru.jpg
 RewriteCond %{REQUEST_URI} ^/public/images/(.*)semeru(.*).jpg
