@@ -71,7 +71,7 @@ uml MALANG :
 1. nano /etc/bind/semeruc14/semeruc14.pw
 2. Tambahkan konfigurasi :
 ```
-ns1		IN	A	10.151.77.91  ; IP PROBOLINGGO
+ns1		IN	A	10.151.77.123
 gunung	IN	NS	ns1
 ```
 ![](img/6a.jpg)
