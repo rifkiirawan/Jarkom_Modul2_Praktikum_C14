@@ -6,12 +6,12 @@
 Jawab :
 1. nano /etc/bind/named.conf.local
 2. Tambahkan konfigurasi :  
-![](img/1a.jpg)
+![](img/1a.jpg)  
 3. mkdir /etc/bind/semeruc14
 4. cp /etc/bind/db.local /etc/bind/semeruc14/semeruc14.pw
 5. nano /etc/bind/semeruc14/semeruc14.pw
 6. Tambahkan konfigurasi :  
-![](img/1b.jpg)
+![](img/1b.jpg)  
 7. Service bind9 restart
 
 ### 2. Alias http://www.semeruc14.pw
@@ -19,7 +19,7 @@ Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
 2. Tambahkan konfigurasi :  
 ```www     IN	    CNAME	   semeruc14.pw.```  
-![](img/1b.jpg)
+![](img/1b.jpg)  
 3. Service bind9 restart
 
 ### 3. Subdomain http://penanjakan.semeruc14.pw
@@ -27,7 +27,7 @@ Jawab :
 1. nano /etc/bind/semeruc14/semeruc14.pw
 2. Tambahkan konfigurasi :  
 ```penanjakan	IN	A	10.151.77.124```  
-![](img/1b.jpg)
+![](img/1b.jpg)  
 3. Service bind9 restart
 
 ### 4. Reverse main domain 
@@ -40,11 +40,11 @@ zone "77.151.10.in-addr.arpa" {
     file "/etc/bind/semeruc14/77.151.10.in-addr.arpa";
 };
 ```  
-![](img/1a.jpg)
+![](img/1a.jpg)  
 3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa
 4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa
 5. Tambahkan konfigurasi :  
-![](img/4.jpg)
+![](img/4.jpg)  
 6. Service bind9 restart
 
 ### 5. DNS Server Slave pada MOJOKERTO
@@ -56,13 +56,13 @@ uml MALANG :
 also-notify { 10.151.77.123; };
 allow-transfer { 10.151.77.123; };
 ```  
-![](img/5a.jpg)
+![](img/5a.jpg)  
 3. Service bind9 restart
 
 uml MOJOKERTO :
 1. nano /etc/bind/named.conf.local
 2. Tambahkan konfigurasi :  
-![](img/5b.jpg)
+![](img/5b.jpg)  
 3. Service bind9 restart
 
 ### 6. Subdomain dengan alamat http://gunung.semeruC14.pw yang didelegasikan pada server MOJOKERTO dan mengarah ke IP Server PROBOLINGGO.
@@ -74,24 +74,24 @@ uml MALANG :
 ns1		IN	A	10.151.77.123
 gunung	IN	NS	ns1
 ```  
-![](img/6a.jpg)
+![](img/6a.jpg)  
 3. nano /etc/bind/named.conf.options
 4. Tambahkan konfigurasi :  
-![](img/6b.jpg)
+![](img/6b.jpg)  
 5. Service bind9 restart
 
 uml MOJOKERTO :
 1. nano /etc/bind/named.conf.local
 2. Tambahkan konfigurasi :  
-![](img/6c.jpg)
+![](img/6c.jpg)  
 3. nano /etc/bind/named.conf.options
 4. Tambahkan konfigurasi :  
-![](img/6d.jpg)
+![](img/6d.jpg)  
 5. mkdir /etc/bind/delegasi
 6. cp /etc/bind/db.local /etc/bind/delegasi/gunung.semeruc14.pw
 7. nano /etc/bind/delegasi/gunung.semeruc14.pw
 8. Tambahkan konfigurasi :  
-![](img/6e.jpg)
+![](img/6e.jpg)  
 9. Service bind9 restart
 
 ### 7. Subdomain dengan nama http://naik.gunung.semeruc14.pw.
@@ -100,7 +100,7 @@ uml MOJOKERTO :
 1. nano /etc/bind/delegasi/gunung.semeruc14.pw
 2. Tambahkan konfigurasi :   
 ```	naik	IN	A	10.151.77.124 ```  
-![](img/6e.jpg)
+![](img/6e.jpg)  
 3. Service bind9 restart
 
 ### 8. Domain http://semeruc14.pw memiliki DocumentRoot pada /var/www/semeruc14.pw.
@@ -109,7 +109,7 @@ Jawab :
 2. cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/semeruc14.pw.conf
 3. nano /etc/apache2/sites-available/semeruc14.pw.conf
 Tambahkan konfigurasi :  
-![](img/8.jpg)
+![](img/8.jpg)  
 4. a2ensite semeruc14.pw
 6. wget 10.151.36.202/semeru.pw.zip
 7. unzip semeru.pw.zip -d /var/www
