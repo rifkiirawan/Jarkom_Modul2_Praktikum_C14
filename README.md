@@ -41,8 +41,8 @@ zone "77.151.10.in-addr.arpa" {
 };
 ```  
 ![](img/1a.jpg)  
-3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa
-4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa
+3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa  
+4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa  
 5. Tambahkan konfigurasi :  
 ![](img/4.jpg)  
 6. Service bind9 restart
