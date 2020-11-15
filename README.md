@@ -34,7 +34,8 @@ Jawab :
 Jawab :
 1. nano /etc/bind/named.conf.local
 2. Tambahkan konfigurasi :
-```zone "77.151.10.in-addr.arpa" {
+```
+zone "77.151.10.in-addr.arpa" {
     type master;
     file "/etc/bind/semeruc14/77.151.10.in-addr.arpa";
 };
@@ -51,8 +52,9 @@ Jawab :
 uml MALANG :
 1. nano /etc/bind/named.conf.local
 2. Tambahkan konfigurasi :
-```	also-notify { 10.151.77.123; };
-	allow-transfer { 10.151.77.123; };
+```	
+also-notify { 10.151.77.123; };
+allow-transfer { 10.151.77.123; };
 ```
 ![](img/5a.jpg)
 3. Service bind9 restart
