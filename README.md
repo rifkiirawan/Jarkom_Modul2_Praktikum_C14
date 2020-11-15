@@ -2,8 +2,115 @@
 ### M Ridho Daffa Ardista 05111840000065
 ### Rifki Aulia Irawan 05111840000142
 
+### 1. Alamat http://semeruc14.pw yang diatur DNS-nya pada MALANG dan mengarah ke IP Server PROBOLINGGO
+Jawab :
+1. nano /etc/bind/named.conf.local
+2. Tambahkan konfigurasi :
+![](img/1a.jpg)
+3. mkdir /etc/bind/semeruc14
+4. cp /etc/bind/db.local /etc/bind/semeruc14/semeruc14.pw
+5. nano /etc/bind/semeruc14/semeruc14.pw
+6. Tambahkan konfigurasi :
+![](img/1b.jpg)
+7. Service bind9 restart
 
-### 9. Mengaktifkan mod rewrite agar URL berubah menjadi http://​semeruyyy.pw​/home
+### 2. Alias http://www.semeruc14.pw
+Jawab :
+1. nano /etc/bind/semeruc14/semeruc14.pw
+2. Tambahkan konfigurasi :
+```www     IN	    CNAME	   semeruc14.pw.```
+![](img/1b.jpg)
+3. Service bind9 restart
+
+### 3. Subdomain http://penanjakan.semeruc14.pw
+Jawab :
+1. nano /etc/bind/semeruc14/semeruc14.pw
+2. Tambahkan konfigurasi :
+```penanjakan	IN	A	10.151.77.124```
+![](img/1b.jpg)
+3. Service bind9 restart
+
+### 4. Reverse main domain 
+Jawab :
+1. nano /etc/bind/named.conf.local
+2. Tambahkan konfigurasi :
+```zone "77.151.10.in-addr.arpa" {
+    type master;
+    file "/etc/bind/semeruc14/77.151.10.in-addr.arpa";
+};
+```
+![](img/1a.jpg)
+3. cp /etc/bind/db.local /etc/bind/semeruc14/77.151.10.in-addr.arpa
+4. nano /etc/bind/semeruc14/77.151.10.in-addr.arpa
+5. Tambahkan konfigurasi :
+![](img/4.jpg)
+6. Service bind9 restart
+
+### 5. DNS Server Slave pada MOJOKERTO
+Jawab :
+uml MALANG :
+1. nano /etc/bind/named.conf.local
+2. Tambahkan konfigurasi :
+```	also-notify { 10.151.77.123; };
+	allow-transfer { 10.151.77.123; };
+```
+![](img/5a.jpg)
+3. Service bind9 restart
+
+uml MOJOKERTO :
+1. nano /etc/bind/named.conf.local
+2. Tambahkan konfigurasi :
+![](img/5b.jpg)
+3. Service bind9 restart
+
+### 6. Subdomain dengan alamat http://gunung.semeruC14.pw yang didelegasikan pada server MOJOKERTO dan mengarah ke IP Server PROBOLINGGO.
+Jawab :
+uml MALANG :
+1. nano /etc/bind/semeruc14/semeruc14.pw
+2. Tambahkan konfigurasi :
+![](img/6a.jpg)
+3. nano /etc/bind/named.conf.options
+4. Tambahkan konfigurasi :
+![](img/6b.jpg)
+5. Service bind9 restart
+
+uml MOJOKERTO :
+1. nano /etc/bind/named.conf.local
+2. Tambahkan konfigurasi :
+![](img/6c.jpg)
+3. nano /etc/bind/named.conf.options
+4. Tambahkan konfigurasi :
+![](img/6d.jpg)
+5. mkdir /etc/bind/delegasi
+6. cp /etc/bind/db.local /etc/bind/delegasi/gunung.semeruc14.pw
+7. nano /etc/bind/delegasi/gunung.semeruc14.pw
+8. Tambahkan konfigurasi :
+![](img/6e.jpg)
+9. Service bind9 restart
+
+### 7. Subdomain dengan nama http://naik.gunung.semeruc14.pw.
+Jawab :
+uml MOJOKERTO :
+1. nano /etc/bind/delegasi/gunung.semeruc14.pw
+2. Tambahkan konfigurasi : 
+```	naik	IN	A	10.151.77.124 ```
+![](img/6e.jpg)
+3. Service bind9 restart
+
+### 8. Domain http://semeruc14.pw memiliki DocumentRoot pada /var/www/semeruc14.pw.
+Jawab :
+1. cd /etc/apache2/sites-available
+2. cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/semeruc14.pw.conf
+3. nano /etc/apache2/sites-available/semeruc14.pw.conf
+Tambahkan konfigurasi :
+![](img/8.jpg)
+4. a2ensite semeruc14.pw
+6. wget 10.151.36.202/semeru.pw.zip
+7. unzip semeru.pw.zip -d /var/www
+8. mv /var/www/semeru.pw /var/www/semeruc14.pw
+9. service apache2 restart
+
+### 9. Mengaktifkan mod rewrite agar URL berubah menjadi http://​semeruc14.pw​/home
 Jawab :
 1. Aktifkan module rewrite dengan menjalankan perintah a2enmod
 2. edit .htaccess pada /var/www/semeruc14.pw
@@ -13,15 +120,15 @@ Jawab :
 5. Buka semeruc14.pw/home, maka akkan tampil halaman seperti berikut  
 ![](img/9b.jpg)
 
-### 10. Web ​http://penanjakan.semeruyyy.pw​ akan digunakan untuk menyimpan assets file yangmemiliki ​DocumentRoot ​pada ​/var/www/​penanjakan.semeruyyy.pw​ ​dan memiliki struktur folder sebagai berikut:
-/var/www/penanjakan.semeruyyy.pw  
+### 10. Web ​http://penanjakan.semeruyyy.pw​ akan digunakan untuk menyimpan assets file yangmemiliki ​DocumentRoot ​pada ​/var/www/​penanjakan.semeruc14.pw​ ​dan memiliki struktur folder sebagai berikut:
+/var/www/penanjakan.semeruc14.pw  
 /public/javascripts  
 /public/css  
 /public/images  
 /errors  
 Jawab :
 1. Copy file 000-default.conf menuju penanjakan.semeruc14.pw.conf
-2. Tambahkan konfigurasi pada file penanjakan.semeruc10.pw.conf seperti berikut  
+2. Tambahkan konfigurasi pada file penanjakan.semeruc14.pw.conf seperti berikut  
 ```ServerName penanjakan.semeruc14.pw```  
 ![](img/10a.jpg)
 3. jalankan a2ensite penanjakan.semeruc14.pw
@@ -66,7 +173,7 @@ Jawab :
 
 ### 13. Untuk mengakses file assets javascript awalnya harus menggunakan url http://penanjakan.semeruc14.pw/public/javascripts. Karena terlalu panjang maka dibuatkan konfigurasi virtual host agar ketika mengakses file assets menjadi http://penanjakan.semeruc14.pw/js.
 Jawab :
-1. nano penanjakan.semeruc10.pw.conf
+1. nano penanjakan.semeruc14.pw.conf
 2. tambahkan konfigurasi berikut  
 ```Alias "/js" "/var/www/penanjakan.semeruc14.pw/public/javascripts"```  
 ![](img/13a.jpg)  
@@ -129,8 +236,17 @@ Jawab :
 Redirect / "http://semeruc14.pw/"
 ```  
 ![](img/16b.jpg)  
-2. ketikkan IP Probolinggo pada browser, jika muncul halaman seperti berikut, maka sudah berhhasil  
+2. ketikkan IP Probolinggo pada browser, jika muncul halaman seperti berikut, maka sudah berhasil  
 ![](img/16a.jpg)  
 
 ### 17. Karena pengunjung pada /var/www/penanjakan.semeruc14.pw/public/images sangat banyak maka semua request gambar yang memiliki substring “semeru” akan diarahkan menuju semeru.jpg.
 Jawab :
+1. nano /var/www/penanjakan.semeruc14.pw/.htaccess
+2. Tambahkan konfigurasi :
+```
+RewriteCond %{REQUEST_URI} !^/public/images/semeru.jpg
+RewriteCond %{REQUEST_URI} ^/public/images/(.*)semeru(.*).jpg
+RewriteRule ^ http://penanjakan.semeruc14.pw/public/images/semeru.jpg
+```  
+![](img/17.jpg)  
+3. service apache2 restart
